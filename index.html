@@ -16,46 +16,81 @@
 </head>
 <body>
     
-    <div class="login" id="login"></div>
-    <div class="wrapper">
-        <div class="title">RoboQuery</div>
-        <div class="form" id="form">
-            <div class="bot-inbox inbox animate__animated animate__fadeIn">
-                <div class="icon">
-                    <i class="fa-solid fa-robot"></i>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top w-100">
+        <div class="container-fluid">
+            <div class="brandContain text-center">
+                <a class="navbar-brand text-dark" href="#">RoboQuery</a>
+                <i class="fa-solid fa-robot text-dark"></i>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse m-auto" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">RoboQuery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#commands">Comandos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Información</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br><br><br><br>
+	<div class="container containDescription">
+        <i class="fa-solid fa-robot"></i>
+		<h1>RoboQuery</h1>
+		<p class="description">RoboQuery es un chatbot para realizar consultas, específicamente sobre el creador. También cuenta con la funcionalidad para que puedas registrarte y loguearte. Recordá siempre escribir la primera letra de tu consulta en mayúsculas para que pueda entenderte.</p>
+	</div>
+    <hr class="border border-light border-3 opacity-75 w-100" >
+    <div class="login" id="login" style="margin-bottom: 10px;"></div>
+    <div class="containWrapper">
+        <div class="wrapper">
+            <div class="title">RoboQuery</div>
+            <div class="form" id="form">
+                <div class="bot-inbox inbox animate__animated animate__fadeIn">
+                    <div class="icon">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="msg-header">
+                        <p>Bienvenido, typea "Login" para ingresar, o "Register" para ingresar tus datos</p>
+                    </div>
                 </div>
-                <div class="msg-header">
-                    <p>Bienvenido, typea "Login" para ingresar, o "Register" para ingresar tus datos</p>
+            </div>
+            <div class="typing-field">
+                <div class="input-data">
+                    <input id="data" type="text" placeholder="Escribe algo aquí.." required>
+                    <button id="send-btn">Enviar</button>
                 </div>
             </div>
         </div>
-        <div class="typing-field">
-            <div class="input-data">
-                <input id="data" type="text" placeholder="Escribe algo aquí.." required>
-                <button id="send-btn">Enviar</button>
-            </div>
-        </div>
+        <div id="dance"></div>
     </div>
-    <div id="dance"></div>
-    <div class="alert alert-dark animate__animated animate__bounceInLeft position-absolute top-50 start-50 translate-middle role=alert">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <h4 class="alert-heading">¡Hola! Este es RoboQuery</h4>
-        <p>RoboQuery es un chatbot para realizar consultas, especificamente sobre el creador. Tambien cuenta con la funcionalidad para que puedas registrarte y loguearte. Recorda siempre escribir la primera letra de tu consulta en mayusculas para que pueda entenderte</p>
-        <hr>
-        <h4 class="mb-0">Estos son (por ahora) los comandos que podes utilizar:</h4>
-        <ul>
-            <li>Informacion</li>
-            <li>Linkedin</li>
-            <li>Github</li>
-            <li>Email</li>
-            <li>Curriculum</li>
-            <li>Chiste</li>
-            <li>Dance</li>
-            <li>Register</li>
-            <li>Login</li>
-        </ul>
-        
-      </div>
+    <hr class="border border-light border-3 opacity-75 w-100" >
+    <h1>Comandos</h1>
+    <div class="d-flex flex-wrap" id="commands">
+        <div class="command" data-bs-toggle="popover" data-bs-content="Muestra información sobre el creador">Información</div>
+        <div class="command" data-bs-toggle="popover" data-bs-content="Muestra el perfil de LinkedIn del creador">LinkedIn</div>
+        <div class="command" data-bs-toggle="popover" data-bs-content="Muestra el perfil de GitHub del creador">Github</div>
+        <div class="command" data-bs-toggle="popover" data-bs-content="Muestra el email del creador">Email</div>
+        <div class="command" data-bs-toggle="popover" data-bs-content="Muestra el currículum del creador">Curriculum</div>
+        <div class="command" data-bs-toggle="popover" data-bs-content="Muestra un chiste aleatorio">Chiste</div>
+        <div class="command" data-bs-toggle="popover" data-bs-content="Hace que el bot baile">Dance</div>
+        <div class="command" data-bs-toggle="popover" data-bs-content="Conversa con RoboQuery">Mod chat</div>
+        <div class="command" data-bs-toggle="popover" data-bs-content="Te permite registrarte">Register</div>
+        <div class="command" data-bs-toggle="popover" data-bs-content="Te permite loguearte">Login</div>
+    </div>
+    <hr class="border border-light border-3 opacity-75 w-100" >
+    <div class="text-light">Creado por gastoniglesiasdev.com</div>
+    <div class="d-flex justify-content-center mb-5 socialContain">
+        <a href="https://www.linkedin.com/in/gast%C3%B3n-iglesias-847221213/" target="_blank"><i class="fab fa-linkedin fa-2x mr-3"></i></a>
+        <a href="https://github.com/Gastonig9" target="_blank"><i class="fab fa-github fa-2x mr-3"></i></a>
+        <a href="https://gastoniglesiasdev.000webhostapp.com/" target="_blank"><i class="fas fa-globe fa-2x mr-3"></i></a>
+    </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

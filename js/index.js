@@ -1,22 +1,31 @@
-// VAR //
+//DOM ELEMENTS
 let $form = document.getElementById("form")
 let $sendBTN = document.getElementById("send-btn")
 let $inputData = document.getElementById("data")
 let loginUser = document.getElementById("login")
 let botDance = document.getElementById("dance")
 let ls = localStorage
+
+//ARRAYS "MOD CHATBOT"
 const arrayData = [];
+const arrayReplie = [];
+
+//COMMAND "LOGIN", "REGISTER", "DANCE"
 let user = false;
 let userLogin = false;
 let music1 = new Audio();
 music1.src = "./assets/musicOne.mp3"
+const apiKey = '6a604e7ee2c005697546c46d1ba1418b';
 
-// FUNCTIONS //
+//FUNCTIONS
+
+main()
+
 function Consulta(reply) {
     this.reply = reply;
 }
 
-function sendMessage() {
+function main() {
 
     $sendBTN.addEventListener("click", e => {
 
@@ -26,20 +35,20 @@ function sendMessage() {
         let messageBot = document.createElement("div")
 
         if ($inputData.value.includes("Informacion")) {
-            let reply = new Consulta("Gaston Iglesias. Es estudiante y freelancer de la carrera de Diseño Multimedial, tambien realiza una tecnicatura en la plataforma de Coderhouse como Desarrollador Web.")
-            console.log(reply)
+            let reply = new Consulta("Gaston Iglesias. Es estudiante y freelancer de la carrera de Diseño Multimedial, tambien realiza una tecnicatura en la plataforma de Coderhouse como Desarrollador Web.");
+            console.log(reply);
             messageBot.innerHTML = `
-                                            <div class="bot-inbox inbox animate__animated animate__fadeIn"">
-                                                <div class="icon">
-                                                <i class="fa-solid fa-robot"></i>
-                                                </div>
-                                                <div class="msg-header">
-                                                    <p>${reply.reply}</p>
-                                                </div>
-                                            </div>
-                                        `
-            $form.appendChild(messageBot)
-            $inputData.value = ''
+                <div class="bot-inbox inbox animate__animated animate__fadeIn">
+                  <div class="icon">
+                    <i class="fa-solid fa-robot"></i>
+                  </div>
+                  <div class="msg-header">
+                    <p>${reply.reply}</p>
+                  </div>
+                </div>
+              `;
+            $form.appendChild(messageBot);
+            $inputData.value = '';
             return;
         }
         if ($inputData.value.includes("Github")) {
@@ -134,7 +143,7 @@ function sendMessage() {
             $inputData.value = ''
             return;
         }
-        if($inputData.value.includes("Dance")){
+        if ($inputData.value.includes("Dance")) {
             danceBot()
         }
         if ($inputData.value.includes("Register")) {
@@ -154,6 +163,10 @@ function sendMessage() {
 
             user = true;
             return;
+        }
+        if ($inputData.value.includes("Mod chat")) {
+            messageBot.style.display = "none"
+            chatBot()
         }
         if (user) {
             SetLS()
@@ -177,11 +190,25 @@ function sendMessage() {
             userLogin = true;
             return;
         }
+        if (contienePalabrasOfensivas($inputData.value)) {
+            let reply = respuestaEnojada();
+            messageBot.innerHTML = `
+              <div class="bot-inbox inbox animate__animated animate__fadeIn">
+                <div class="icon">
+                  <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="msg-header">
+                  <p>${reply}</p>
+                </div>
+              </div>
+            `;
+            $form.appendChild(messageBot)
+        }
         if (userLogin) {
             let userLogin = JSON.parse(localStorage.getItem("replyBot"))
 
             let findUser = userLogin.find(element => element === $inputData.value)
-            if(findUser){
+            if (findUser) {
                 swal(`Bienvenido ${findUser}`)
                 console.log("hgola")
                 loginUser.innerHTML = `
@@ -192,33 +219,31 @@ function sendMessage() {
                 </div>
                 `
                 $inputData.value = ""
-                
-            }else{
+
+            } else {
                 swal(`No existe ningun usuario con ese nombre`)
             }
-            
+
         } else {
-            messageBot.innerHTML = `
-                                            <div class="bot-inbox inbox animate__animated animate__fadeIn"">
-                                                <div class="icon">
-                                                <i class="fa-solid fa-robot"></i>
-                                                </div>
-                                                <div class="msg-header">
-                                                    <p>No puedo responder a eso ahora :(</p>
-                                                </div>
-                                            </div>
-                                        `
-            $form.appendChild(messageBot)
+            //     messageBot.innerHTML = `
+            //                                     <div class="bot-inbox inbox animate__animated animate__fadeIn"">
+            //                                         <div class="icon">
+            //                                         <i class="fa-solid fa-robot"></i>
+            //                                         </div>
+            //                                         <div class="msg-header">
+            //                                             <p>No puedo responder a eso ahora :(</p>
+            //                                         </div>
+            //                                     </div>
+            //                                 `
+            //     $form.appendChild(messageBot)
             $inputData.value = ''
-            return;
+            //     return;
         }
 
     })
 }
 
-sendMessage()
 
-//SAVE LS//
 function SetLS() {
     let json = JSON.parse(localStorage.getItem("replyBot"))
     console.log(json)
@@ -235,7 +260,6 @@ function GetLS(clave) {
     return JSON.parse(localStorage.getItem(clave));
 }
 
-//BOT DANCE//
 function danceBot() {
     let contador = 0;
     music1.play()
@@ -246,11 +270,128 @@ function danceBot() {
     `
     let songInterval = setInterval(() => {
         contador++
-        if(contador === 6) {
+        if (contador === 6) {
             music1.pause()
             clearInterval(songInterval)
-            botDance.innerHTML = ` ` 
+            botDance.innerHTML = ` `
         }
     }, 2000);
 
 }
+
+function chatBot() {
+    const responses = [
+        "¡Hola! ¿Cómo estás?",
+        "Me alegra hablar contigo",
+        "¿Qué te parece si hablamos sobre tus pasatiempos?",
+        "¿Quieres que te cuente un chiste?",
+        "Interesante, cuéntame más sobre eso",
+        "¿Has viajado a algún lugar emocionante recientemente?",
+        "¿Cuál es tu comida favorita?",
+        "¿Qué piensas sobre el cambio climático?",
+        "¿Te gusta la música? ¿Cuál es tu género favorito?",
+        "Eso es interesante, ¿has considerado escribir un libro sobre eso?",
+    ];
+
+    let newMessageBot = document.createElement("div");
+    newMessageBot.innerHTML = `
+      <div class="bot-inbox inbox animate__animated animate__fadeIn">
+        <div class="icon">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="msg-header">
+          <p>¡Charlemos!</p>
+        </div>
+      </div>
+    `;
+    $form.appendChild(newMessageBot);
+
+    $inputData.addEventListener("blur", (event) => {
+        const userMessage = event.target.value.trim();
+        if (userMessage) {
+            arrayReplie.push(userMessage);
+            console.log(arrayReplie);
+        }
+
+        if (arrayReplie.length < 5) {
+            let message = document.createElement("div")
+            message.innerHTML = `<div class="user-inbox inbox"><div class="msg-header"><p>${$inputData.value}</p></div></div>`
+            $form.appendChild(message)
+            let messageBot = document.createElement("div")
+            let aleatory = responses[Math.floor(Math.random() * responses.length)]
+            messageBot.innerHTML = `
+        <div class="bot-inbox inbox animate__animated animate__fadeIn"">
+            <div class="icon">
+            <i class="fa-solid fa-robot"></i>
+            </div>
+            <div class="msg-header">
+                <p>${aleatory}</p>
+            </div>
+        </div>
+    `
+            $form.appendChild(messageBot)
+            $inputData.value = ''
+        } else {
+            // seleccionar una respuesta aleatoria del arrayReplie
+            let aleatory = arrayReplie[Math.floor(Math.random() * arrayReplie.length)];
+
+            // crear el mensaje de respuesta
+            let message = document.createElement("div")
+            message.innerHTML = `<div class="user-inbox inbox"><div class="msg-header"><p>${$inputData.value}</p></div></div>`
+            $form.appendChild(message)
+            let messageBot = document.createElement("div");
+            messageBot.innerHTML = `
+                <div class="bot-inbox inbox animate__animated animate__fadeIn"">
+                    <div class="icon">
+                    <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="msg-header">
+                        <p>${aleatory}</p>
+                    </div>
+                </div>
+            `;
+
+            // agregar el mensaje al formulario
+            $form.appendChild(messageBot);
+            $inputData.value = '';
+        }
+        return;
+    });
+}
+function esOfensiva(palabra) {
+    // Aquí puedes definir tu lógica para verificar si una palabra es ofensiva
+    return ["puto", "trolo", "ofensiva3"].includes(palabra.toLowerCase());
+}
+
+function contienePalabrasOfensivas(frase) {
+    const palabras = frase.toLowerCase().split(" ");
+    for (const palabra of palabras) {
+        if (esOfensiva(palabra)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function respuestaEnojada() {
+    const respuestasInsultos = [
+        "No necesito soportar este tipo de comentarios ofensivos.",
+        "Por favor, trata de ser más respetuoso.",
+        "No toleraré este tipo de lenguaje en mi conversación.",
+        "Tratemos de mantener la conversación en un tono amigable y respetuoso.",
+        "No es necesario recurrir a insultos para comunicarnos.",
+        "Intentemos hablar de manera civilizada y con respeto.",
+        "No toleraré que me hables de esa manera.",
+        "Por favor, cuida tus palabras.",
+        "Tratemos de llevar la conversación de manera cordial y amistosa.",
+        "Si continúas con ese tono, no podré continuar la conversación."
+    ];
+    let aleatory = respuestasInsultos[Math.floor(Math.random() * respuestasInsultos.length)]
+    return aleatory;
+}
+
+//COMMANDS POPOVER
+var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+})

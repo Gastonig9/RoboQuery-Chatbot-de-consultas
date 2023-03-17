@@ -9,9 +9,80 @@ html,body{
     display: grid;
     height: 100%;
     place-items: center;
-    background-image: url("https://i.ibb.co/6tJG4VB/nave.jpg");
+    background-color: #000000;
+    /* background-image: url("https://i.ibb.co/6tJG4VB/nave.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
+}
+
+.containDescription i {
+    font-size: 50px;
+    display: block;
+    text-align: center;
+    color: #ffee00;
+}
+
+.brandContain {
+    background-color: white;
+    padding: 8px;
+    border-radius: 20px;
+}
+
+h1 {
+    width: 50%;
+    margin: auto;
+    font-size: 4rem;
+    text-align: center;
+    font-weight: bold;
+    color: #3b3333;
+    text-shadow: 5px 5px #daff07;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+#navbarNav ul {
+    margin: auto;
+}
+
+.description {
+    font-size: 1.5rem;
+    color: #343a40;
+    text-shadow: 2px 2px #ffee00;
+    margin-bottom: 4rem;
+}
+
+.command {
+    width: 20%;
+    margin: auto;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: #007bff;
+    color: #fff;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.socialContain {
+    font-size: 50px;
+}
+
+.socialContain a {
+    margin: 15px;
+}
+
+.socialContain a:hover{
+    transform: scale(1.2);
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.command:hover {
+    transform: scale(1.2);
+    cursor: pointer;
 }
 
 ::selection{
@@ -20,7 +91,7 @@ html,body{
 }
 
 ::-webkit-scrollbar{
-    width: 3px;
+    width: 7px;
     border-radius: 25px;
 }
 ::-webkit-scrollbar-track{
@@ -32,7 +103,15 @@ html,body{
 ::-webkit-scrollbar-thumb:hover{
     background: #ccc;
 }
-
+.containWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-image: url("https://i.ibb.co/C9qMhJ3/porthole-on-hallway-in-spaceship-moon-and-mars-planet-in-viewport-futuristic-interior-room-backgroun.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
 .wrapper{
     width: 370px;
     background: #fff;
