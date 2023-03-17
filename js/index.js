@@ -359,8 +359,7 @@ function chatBot() {
     });
 }
 function esOfensiva(palabra) {
-    // Aquí puedes definir tu lógica para verificar si una palabra es ofensiva
-    return ["puto", "trolo", "ofensiva3"].includes(palabra.toLowerCase());
+    return ["estupido", "tonto", "basura", "maldito", "tarado"].includes(palabra.toLowerCase());
 }
 
 function contienePalabrasOfensivas(frase) {
