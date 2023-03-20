@@ -34,7 +34,7 @@
                         <a class="nav-link" href="#commands">Comandos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Información</a>
+                        <a class="nav-link" href="#info">Información</a>
                     </li>
                 </ul>
             </div>
@@ -57,7 +57,7 @@
                         <i class="fa-solid fa-robot"></i>
                     </div>
                     <div class="msg-header">
-                        <p>Bienvenido, typea "Login" para ingresar, o "Register" para ingresar tus datos</p>
+                        <p>¡Hola! Soy RoboQuery. Typea "Login" para ingresar, o "Register" para ingresar tus datos</p>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,10 @@
         </div>
         <div id="dance"></div>
     </div>
+    <button class="btn btn-danger w-100 p-1" style="display: none;" id="btnReset"> Restart RoboQuery</button>
+
     <hr class="border border-light border-3 opacity-75 w-100" >
+
     <h1>Comandos</h1>
     <div class="d-flex flex-wrap" id="commands">
         <div class="command" data-bs-toggle="popover" data-bs-content="Muestra información sobre el creador">Información</div>
@@ -80,16 +83,46 @@
         <div class="command" data-bs-toggle="popover" data-bs-content="Muestra el currículum del creador">Curriculum</div>
         <div class="command" data-bs-toggle="popover" data-bs-content="Muestra un chiste aleatorio">Chiste</div>
         <div class="command" data-bs-toggle="popover" data-bs-content="Hace que el bot baile">Dance</div>
+        <div class="command" data-bs-toggle="popover" data-bs-content="Obten informacion sobre el clima por ciudad">Clima</div>
         <div class="command" data-bs-toggle="popover" data-bs-content="Conversa con RoboQuery">Mod chat</div>
+        <div class="command" data-bs-toggle="popover" data-bs-content="Puedes acceder a un diccionario de palabras (disponible en ingles)">Diccionario</div>
         <div class="command" data-bs-toggle="popover" data-bs-content="Te permite registrarte">Register</div>
         <div class="command" data-bs-toggle="popover" data-bs-content="Te permite loguearte">Login</div>
     </div>
+
     <hr class="border border-light border-3 opacity-75 w-100" >
+
+    <h1>Informacion</h1>
+    <div class="d-flex" id="info">
+        <div class="flex-shrink-0">
+          <img src="https://i.ibb.co/2sLW1RQ/img.jpg" alt="...">
+        </div>
+        <div class="flex-grow-1 ms-3">
+          <h3 class="text-light">Mi nombre es Gaston Iglesias. Desarrolle RoboQuery como un proyecto personal y me ayudo a obtener y reforzar nuevas habilidades
+          en el Desarrollo Front End.</h3>
+          <hr class="border border-light border-1 opacity-75">
+          <h4 class="text-light">Estas son las herramientas que utilice para este proyecto:</h4>
+          <div class="icons text-center mt-3">
+            <h5 class="fs-1 text text-light">HTML <i class="fa-brands fa-html5" style="color: orange;"></i></h5>
+            <h5 class="fs-1 text text-light">CSS <i class="fa-brands fa-css3-alt" style="color: rgb(4, 163, 202)"></i></h5>
+            <h5 class="fs-1 text text-light">Bootstrap <i class="fa-brands fa-bootstrap" style="color: purple;"></i></h5>
+            <h5 class="fs-1 text text-light">Javascript <i class="fa-brands fa-js" style="color: yellow;"></i></h5>
+          </div>
+        </div>
+    </div>
+
+    <hr class="border border-light border-3 opacity-75 w-100" >
+
     <div class="text-light">Creado por gastoniglesiasdev.com</div>
     <div class="d-flex justify-content-center mb-5 socialContain">
         <a href="https://www.linkedin.com/in/gast%C3%B3n-iglesias-847221213/" target="_blank"><i class="fab fa-linkedin fa-2x mr-3"></i></a>
         <a href="https://github.com/Gastonig9" target="_blank"><i class="fab fa-github fa-2x mr-3"></i></a>
         <a href="https://gastoniglesiasdev.000webhostapp.com/" target="_blank"><i class="fas fa-globe fa-2x mr-3"></i></a>
+    </div>
+    <div class="alert alert-dark alert-dismissible fade show fixed-bottom w-50 animate__animated animate__lightSpeedInLeft" role="alert" id="alertModChat" style="display: none;">
+        <strong>El Mod Chat</strong> te permite entablar una conversacion con RoboQuery. Ten en cuenta que al principio él estará aprendiendo de lo que le digas.
+        ¡Tenle paciencia!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
